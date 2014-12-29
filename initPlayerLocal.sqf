@@ -2,7 +2,7 @@
 
 	private ["_list", "_condition"];
 
-	_list = ["new", [player]] call OO_CIRCULARLIST;
+	_list = ["new", allunits] call OO_CIRCULARLIST;
 
 	while { true } do {
 		_condition = {
