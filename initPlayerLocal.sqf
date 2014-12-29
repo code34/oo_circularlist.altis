@@ -2,9 +2,7 @@
 
 	private ["_list", "_condition"];
 
-	sleep 3;
-
-	_list = ["new", [tata]] call OO_CIRCULARLIST;
+	_list = ["new", [player]] call OO_CIRCULARLIST;
 
 	while { true } do {
 		_condition = {
