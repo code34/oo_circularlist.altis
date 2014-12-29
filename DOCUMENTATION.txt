@@ -1,0 +1,71 @@
+	/*
+	Author: code34 nicolas_boiteux@yahoo.fr
+	Copyright (C) 2014-2015 Nicolas BOITEUX
+
+	CLASS OO_CIRCULARLIST -  Circular LIST
+	
+	This program is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
+	
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+	
+	You should have received a copy of the GNU General Public License
+	along with this program.  If not, see <http://www.gnu.org/licenses/>. 
+	*/
+
+
+
+
+	/*
+		Function: _list = ["new", array] call OO_CIRCULARLIST;
+		Create a new circular list
+		
+		Parameters:
+			array - array contains the list
+		
+	*/
+
+
+	/*
+		Function: = ["getPrev", [condition,return]] call _list;
+		Retrieve the previous element of the list
+		
+		Parameters:
+			condition - code condition return false/true
+			return - return expected when all conditions are false
+			
+	*/
+
+	/*
+		Function: = ["getNext", [condition,return]] call _list;
+		Retrieve the next element of the list
+		
+		Parameters:
+			condition - code condition return false/true
+			return - return expected when all conditions are false
+			
+	*/
+
+	/*
+		Function: = ["set", array] call _list;
+		Set the list
+		
+		Parameters:
+			array - array containing the new list
+			
+	*/
+
+
+	/*
+		Function: = ["delete", _list] call OO_CIRCULARLIST;
+		Destroy the list
+		
+		Parameters:
+			_list - _list object reference
+			
+	*/		
