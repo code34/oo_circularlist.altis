@@ -1,6 +1,6 @@
 	/*
 	Author: code34 nicolas_boiteux@yahoo.fr
-	Copyright (C) 2014-2015 Nicolas BOITEUX
+	Copyright (C) 2014-2018 Nicolas BOITEUX
 
 	CLASS OO_CIRCULARLIST -  Circular LIST
 	
@@ -31,6 +31,7 @@
 	You can share, modify, distribute this script but don't remove the licence and the name of the original author
 
 	logs:
+		0.2	fix private var / add use case / tune sleep
 		0.1 	- OO CIRCULARLIST - first release
 
 
