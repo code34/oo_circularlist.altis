@@ -1,9 +1,8 @@
-	call compilefinal preprocessFileLineNumbers "oo_circularlist.sqf";
+	call compile preprocessFileLineNumbers "oo_circularlist.sqf";
 
-	private ["_list", "_condition"];
-
-	_list = ["new", allunits] call OO_CIRCULARLIST;
-	_condition = { if(getDammage _this > 0.5) then { false; }else{ true; }; };
+	private _list = ["new", allunits] call OO_CIRCULARLIST;
+	private _condition = { if(getDammage _this > 0.5) then { false; }else{ true; }; };
+	private _element = [];
 
 	while { true } do {
 		_element = ["getPrev", [_condition, objnull]] call _list;
