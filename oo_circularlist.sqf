@@ -26,16 +26,19 @@
 		PRIVATE VARIABLE("code","condition");
 
 		PUBLIC FUNCTION("array","constructor") {
+			DEBUG(#, "OO_CIRCULARLIST::constructor")
 			MEMBER("index", 0);
 			MEMBER("list", _this);
 		};
 
 		PUBLIC FUNCTION("array","set") {
+			DEBUG(#, "OO_CIRCULARLIST::set")
 			MEMBER("index", 0);
 			MEMBER("list", _this);
 		};
 
 		PUBLIC FUNCTION("array","getPrev") {	
+			DEBUG(#, "OO_CIRCULARLIST::getPrev")
 			private _condition = _this select 0;
 			private _return = _this select 1;
 			private _continue = true;
@@ -67,6 +70,7 @@
 		};
 
 		PUBLIC FUNCTION("array","getNext") {	
+			DEBUG(#, "OO_CIRCULARLIST::getNext")
 			private _condition = _this select 0;
 			private _return = _this select 1;
 			private _continue = true;
@@ -97,7 +101,8 @@
 			_element;
 		};
 		
-		PUBLIC FUNCTION("","deconstructor") { 
+		PUBLIC FUNCTION("","deconstructor") {
+			DEBUG(#, "OO_CIRCULARLIST::deconstructor") 
 			DELETE_VARIABLE("condition");
 			DELETE_VARIABLE("index");
 			DELETE_VARIABLE("list");
