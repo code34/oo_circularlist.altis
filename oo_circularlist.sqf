@@ -23,84 +23,79 @@
 	CLASS("OO_CIRCULARLIST")
 		PRIVATE VARIABLE("scalar","index");
 		PRIVATE VARIABLE("array","list");
-		PRIVATE VARIABLE("code","condition");
 
-		PUBLIC FUNCTION("array","constructor") {
+		PUBLIC FUNCTION("","constructor") {
 			DEBUG(#, "OO_CIRCULARLIST::constructor")
 			MEMBER("index", 0);
-			MEMBER("list", _this);
+			MEMBER("list", []);
 		};
 
-		PUBLIC FUNCTION("array","set") {
-			DEBUG(#, "OO_CIRCULARLIST::set")
+		PUBLIC FUNCTION("","toArray") {
+			MEMBER("list", nil);
+		};
+
+		PUBLIC FUNCTION("","count") {
+			DEBUG(#, "OO_CIRCULARLIST::count")
+			count MEMBER("list", nil);
+		};
+
+		PUBLIC FUNCTION("ANY","add") {
+			DEBUG(#, "OO_CIRCULARLIST::add")
+			MEMBER("list", nil) pushBack _this;
+		};
+
+		PUBLIC FUNCTION("ANY","addFirst") {
+			DEBUG(#, "OO_CIRCULARLIST::addFirst")
+			private _array = [_this];
+			_array append MEMBER("list", nil);
+			MEMBER("list", _array);
+		};
+
+		PUBLIC FUNCTION("ANY","addLast") {
+			DEBUG(#, "OO_CIRCULARLIST::addLast")
+			MEMBER("list", nil) pushBack _this;
+		};
+
+		PUBLIC FUNCTION("","delFirst") {
+			DEBUG(#, "OO_CIRCULARLIST::delFirst")
+			MEMBER("list",nil) deleteAt 0;
+		};
+
+		PUBLIC FUNCTION("","delLast") {
+			DEBUG(#, "OO_CIRCULARLIST::delLast")
+			MEMBER("list",nil) deleteAt (MEMBER("count", nil) -1);
+		};
+
+		PUBLIC FUNCTION("array","reset") {
+			DEBUG(#, "OO_CIRCULARLIST::reset")
 			MEMBER("index", 0);
-			MEMBER("list", _this);
+			MEMBER("list", []);
 		};
 
-		PUBLIC FUNCTION("array","getPrev") {	
+		PUBLIC FUNCTION("","getFirst") {
+			MEMBER("list", nil) select 0;
+		};
+
+		PUBLIC FUNCTION("","getLast") {
+			MEMBER("list", nil) select (MEMBER("count", nil) -1);
+		};		
+
+		PUBLIC FUNCTION("","getPrev") {
 			DEBUG(#, "OO_CIRCULARLIST::getPrev")
-			private _condition = _this select 0;
-			private _return = _this select 1;
-			private _continue = true;
-			private _count = -1;
-			private _size = count MEMBER("list", nil) - 1;
-			private _index = MEMBER("index", nil);
-			private _element = "";
-
-			while { _continue} do {
-				_index = _index - 1;
-				if(_index < 0) then { _index = _size;};
-
-				_element = MEMBER("list", nil) select _index;
-				_continue = false;
-				_count =_count + 1;
-				
-				if!(_element call _condition) then {
-					_continue = true;
-				};
-
-				if(_count > _size) then {
-					_continue = false;
-					_element = _return;
-				};
-				sleep 0.0001;
-			};
+			private _index = MEMBER("index", nil) - 1;
+			if (_index < 0) then { _index = MEMBER("count", nil) -1;};
 			MEMBER("index", _index);
-			_element;
+			MEMBER("list", nil) select _index;
 		};
 
-		PUBLIC FUNCTION("array","getNext") {	
-			DEBUG(#, "OO_CIRCULARLIST::getNext")
-			private _condition = _this select 0;
-			private _return = _this select 1;
-			private _continue = true;
-			private _count = -1;
-			private _size = count MEMBER("list", nil) - 1;
-			private _index = MEMBER("index", nil);
-			private _element = "";
-			
-			while { _continue} do {
-				_index = _index + 1;
-				if(_index > _size) then { _index = 0;};
-				
-				_element = MEMBER("list", nil) select _index;
-				_continue = false;
-				_count =_count + 1;
-				
-				if!(_element call _condition) then {
-					_continue = true;
-				} else {
-					if(_count > _size) then {
-						_continue = false;
-						_element = _return;
-					};
-				};
-				sleep 0.0001;
-			};
+		PUBLIC FUNCTION("","getNext") {	
+			DEBUG(#, "OO_CIRCULARLIST::getPrev")
+			private _index = MEMBER("index", nil) + 1;
+			if(_index > (MEMBER("count", nil) -1)) then { _index = 0;};
 			MEMBER("index", _index);
-			_element;
+			MEMBER("list", nil) select _index;
 		};
-		
+
 		PUBLIC FUNCTION("","deconstructor") {
 			DEBUG(#, "OO_CIRCULARLIST::deconstructor") 
 			DELETE_VARIABLE("condition");
