@@ -73,10 +73,12 @@
 		};
 
 		PUBLIC FUNCTION("","getFirst") {
+			DEBUG(#, "OO_CIRCULARLIST::getFirst")
 			MEMBER("list", nil) select 0;
 		};
 
 		PUBLIC FUNCTION("","getLast") {
+			DEBUG(#, "OO_CIRCULARLIST::getLast")
 			MEMBER("list", nil) select (MEMBER("count", nil) -1);
 		};		
 
@@ -98,7 +100,6 @@
 
 		PUBLIC FUNCTION("","deconstructor") {
 			DEBUG(#, "OO_CIRCULARLIST::deconstructor") 
-			DELETE_VARIABLE("condition");
 			DELETE_VARIABLE("index");
 			DELETE_VARIABLE("list");
 		};
